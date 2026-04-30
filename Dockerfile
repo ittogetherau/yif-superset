@@ -145,7 +145,7 @@ COPY --from=superset-source /superset/superset-core superset-core
 RUN --mount=type=cache,target=${SUPERSET_HOME}/.cache/uv \
     /app/docker/pip-install.sh --requires-build-essential -r requirements/base.txt
 RUN --mount=type=cache,target=${SUPERSET_HOME}/.cache/uv \
-    uv pip install -e .
+    uv pip install -e .[postgres]
 RUN python -m compileall /app/superset
 
 USER superset
